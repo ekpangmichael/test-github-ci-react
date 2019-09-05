@@ -22,8 +22,8 @@ jobs:
         yarn install
         yarn test a
         yarn run build --if-present
+      env:
+        CI: true
     - name: Deploy applciation
       run: |
         echo "hello"
-      env:
-        CI: true
