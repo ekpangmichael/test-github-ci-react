@@ -23,6 +23,7 @@ jobs:
         yarn test a
         yarn run build --if-present
     - name: Deploy applciation
-      run: yarn start
+      run: |
+        yarn start
       env:
         CI: true
