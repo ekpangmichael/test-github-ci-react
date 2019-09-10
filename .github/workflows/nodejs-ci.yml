@@ -26,4 +26,4 @@ jobs:
         CI: true
     - name: Deploy applciation
       run: |
-        yarn start
+        echo "Build successfully"
