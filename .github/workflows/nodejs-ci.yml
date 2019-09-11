@@ -24,12 +24,6 @@ jobs:
         yarn run build --if-present
       env:
         CI: true
-    - name: Install Heroku cli 
+    - name: Deploy to Heroku
       run: |
-        sudo snap install --classic heroku
-    - name: Add remote branch
-      run: |
-        git remote add heroku https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/${{ secrets.HEROKU_APP_NAME }}.git  
-    - name: Deploy applciation
-      run: |
-        git push heroku master --force
+        git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master 
