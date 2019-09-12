@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Yes! this app was deployed using Github CI/CD
+          Yesss! this app was deployed using Github CI/CD
         </p>
         <a
           className="App-link"
