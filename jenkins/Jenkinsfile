@@ -9,7 +9,7 @@ pipeline {
         CI = 'true' 
     }
     stages {
-        stage('Build') {
+        stage('install') {
             steps {
                 sh 'yarn install'
             }
@@ -19,13 +19,18 @@ pipeline {
                 sh 'yarn test' 
             }
         }
-        // stage('Deploy') {
-        //     steps {
-        //         input message: 'Do you want to deploy the application? (Click "Proceed" to continue)'
-        //          sh './jenkins/scripts/deploy.sh' 
-        //          input message: 'Shutdown the app? (Click "Proceed" to continue)'
-        //          sh './jenkins/scripts/kill.sh' 
-        //     }
-        // }
+         stage('build') { 
+            steps {
+                sh 'yarn build' 
+            }
+        }
+        stage('Deploy') {
+            steps {
+                input message: 'Do you want to deploy the application? (Click "Proceed" to continue)'
+                 sh 'yarn start' 
+                 input message: 'Shutdown the app? (Click "Proceed" to continue)'
+                 sh 'echo app dead' 
+            }
+        }
     }
 }
