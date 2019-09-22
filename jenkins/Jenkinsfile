@@ -25,9 +25,13 @@ pipeline {
             }
         }
         stage('Deploy') {
+           withCredentials([
+            string(credentialsId: 'heroku_api_key', variable: 'HEROKU_API_KEY'),
+          ])
             steps {
-                input message: 'Do you want to deploy the application? (Click "Proceed" to continue)'
-                 sh 'yarn start' 
+                // input message: 'Do you want to deploy the application? (Click "Proceed" to continue)'
+                //  sh 'yarn start' 
+                sh 'echo $HEROKU_API_KEY'
             }
         }
     }
