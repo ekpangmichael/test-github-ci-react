@@ -31,7 +31,7 @@ pipeline {
           withCredentials([
             string(credentialsId: 'heroku_api_key', variable: 'HEROKU_API_KEY')
           ]) {
-           sh "echo $HEROKU_API_KEY"
+           sh "export $HEROKU_API_KEY"
 
             }
         }
