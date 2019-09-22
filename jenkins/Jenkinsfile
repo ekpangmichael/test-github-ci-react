@@ -29,7 +29,7 @@ pipeline {
         stage('Deploy') {
             steps {
           withCredentials([
-            string(credentialsId: 'travela-backend-codeclimate-id', variable: 'HEROKU_API_KEY')
+            string(credentialsId: 'heroku_api_key', variable: 'HEROKU_API_KEY')
           ]) {
            sh "echo $HEROKU_API_KEY"
 
