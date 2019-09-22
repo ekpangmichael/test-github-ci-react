@@ -28,8 +28,6 @@ pipeline {
             steps {
                 input message: 'Do you want to deploy the application? (Click "Proceed" to continue)'
                  sh 'yarn start' 
-                 input message: 'Shutdown the app? (Click "Proceed" to continue)'
-                 sh 'echo app dead' 
             }
         }
     }
