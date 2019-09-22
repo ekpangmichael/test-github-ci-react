@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'node:10-alpine'
+            image 'node:10'
             args '-p 3000:3000'
         }
     }
@@ -30,9 +30,10 @@ pipeline {
             steps {
           withCredentials([
             string(credentialsId: 'heroku_api_key', variable: 'HEROKU_API_KEY')
+            string(credentialsId: 'heroku_api_name', variable: 'HEROKU_API_NAME')
           ]) {
-           sh "export $HEROKU_API_KEY"
-
+           sh 'git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git'
+           sh 'git push heroku HEAD:master -f'
             }
         }
     }
